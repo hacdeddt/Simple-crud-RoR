@@ -1,0 +1,29 @@
+<%= render 'navbar'%>
+<br>
+<h1 style="text-align: center;">Add Task</h1>
+<%= form_for :task, url: tasks_path do |f| %>
+<%= render 'errors', task: @task %>
+<div class="form-group">
+ 	<p>
+		 <%= f.label :content, style: 'font-size:20px;font-weight:600' %><br/>
+		 	<%= f.text_field :content, class: 'form-control' %><br/>
+		
+ 	</p>
+ 	<p>
+		 <%= f.label :comment, style: 'font-size:20px;font-weight:600' %><br/>
+		 <%= f.text_area :comment, class: 'form-control' %><br/>
+ 	</p>
+ </div>
+ <div class="input-group mb-3">
+ 	<div class="input-group-prepend">
+		 	<p>
+				 <%= f.label :status, style: 'font-size:20px;font-weight:600' %>
+				 <%= f.check_box :status, class: 'form-check-label' %><br/>
+			 </p>
+	</div>
+</div>
+	 <p style="text-align: center;">
+ 		<%= f.submit 'Add', class: 'btn btn-primary' %>
+ 	</p>
+ 
+<% end %>

@@ -1,0 +1,45 @@
+<%= render 'navbar' %>
+<br>
+<%= form_tag tasks_path, :method => 'get' do %>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-11">
+			  <%= text_field_tag :search, params[:search], placeholder: "Enter name content", class: 'form-control' %>
+		</div>
+		<%= submit_tag 'Search', class: 'btn btn-primary' %>
+	</div>
+			  
+ </div>
+<% end %>
+<br>
+<table class="table">
+ 	<tr>
+	 	<th>Content</th>
+	 	<th>Note</th>
+	 	<th>Status</th>
+	 	<th>Show</th>
+ 	</tr>
+ 	<% @task.each do |taski| %>
+ 		<tr>
+ 			<td><%= taski.content %></td>
+			 <td><%= taski.comment %></td>
+			 <td><%= taski.status %></td>
+			 <td><%= link_to 'Show', task_path(taski) %></td>
+			
+ 		</tr>
+ 	<% end %>
+ 		<br>
+ 		<tr>
+ 			<td colspan="4" style="text-align: right;"><%= link_to 'Add Content', new_task_path %></td>
+ 		</tr>
+</table>
+	<div style="border-radius: 4px;text-align: center;" class="alert-success" role="alert"><%= notice %></div>
+	<nav aria-label="Page navigation example">
+		<ul class="pagination justify-content-center">
+			<li class="page-item">
+				
+					<%= will_paginate @task, class: 'page', previous_label: "Previous", next_label: "Next",inner_window: 1, outer_windows: 0 %>
+				
+			</li>
+		</ul>
+	</nav>

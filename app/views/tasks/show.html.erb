@@ -1,0 +1,32 @@
+<%= render 'navbar'%>
+<br>
+<h1 style="text-align: center;">Tasks Show</h1>
+<div class="container">
+	<table class="table">
+		<tr>
+			<td>ID: </td>
+			<td><%= @task.id %></td>
+		</tr>
+		<tr>
+			<td>Content: </td>
+			<td><%= @task.content %></td>
+		</tr>
+		<tr>
+			<td>Comment: </td>
+			<td> <%= @task.comment %></td>
+		</tr>
+		<tr>
+			<td>Status: </td>
+			<td><%= @task.status %></td>
+		</tr>
+	 	
+	</table>
+	<hr>
+	<div style="font-size: 20px" class="text-center">
+		<%= link_to 'Back', tasks_path, class: 'badge badge-dark' %> &nbsp;&nbsp;&nbsp;
+		<%= link_to "Edit", edit_task_path(@task), class: 'badge badge-info' %> &nbsp;&nbsp;&nbsp;
+		<%= link_to "Delete", task_path(@task),class: 'badge badge-danger', method: :delete, data: {confirm: 'Are you sure?'} %>
+	</div>
+	<br>
+	<div style="border-radius: 4px;text-align: center;" class="alert-success" role="alert"><%= notice %></div>
+</div>
